@@ -1,9 +1,11 @@
 const mineflayer = require("mineflayer");
-const statusLabel = document.getElementById("statusLabel");
-const botStatusLabel = document.getElementById("botStatusLabel");
+const statusLabels = require("./util/statusLabels");
+
 let startKasuButton = document.getElementById("startKasuButton");
 let stopKasuButton = document.getElementById("stopKasuButton");
+
 let bot;
+
 console.stdinfo = console.info.bind(console);
 console.info = function () {
   const infoLog = Array.from(arguments)[0];
@@ -12,7 +14,7 @@ console.info = function () {
     new RegExp("[A-Z0-9]{8}").test(infoLog) // https://regex101.com/r/NqqPGH/1
   ) {
     let authCode = infoLog.match("[A-Z0-9]{8}");
-    statusLabelWarning(
+    statusLabels.statusLabelWarning(
       `Looks like it's your first time using Kasu with that email. You'll need to authenticate with Microsoft. To authenticate, open the website https://www.microsoft.com/link and enter the code ${authCode}`
     );
   }
@@ -24,23 +26,24 @@ function onKasuStart() {
     document.getElementById("serverPort").value === "" ||
     document.getElementById("userEmail").value === ""
   ) {
-    statusLabelError("Please fill out all the forms!");
+    statusLabels.statusLabelError("Please fill out all the forms!");
     return;
   } else {
-    statusLabelIdle();
+    statusLabels.statusLabelIdle();
   }
 
-  botStatusLabelIdle();
+  statusLabels.botStatusLabelIdle();
   createBot();
 }
 
 function stopKasu() {
   bot.quit("quit");
-  statusLabelIdle();
-  botStatusLabelIdle();
+  statusLabels.statusLabelIdle();
+  statusLabels.botStatusLabelIdle();
   stopKasuButton.disabled = true;
   startKasuButton.disabled = false;
 }
+
 function createBot() {
   let serverIP = document.getElementById("serverIP").value;
   let serverPort = document.getElementById("serverPort").value;
@@ -54,14 +57,14 @@ function createBot() {
   });
 
   bot.on("login", () => {
-    statusLabelSuccess(
+    statusLabels.statusLabelSuccess(
       `Successfully logged into ${serverIP} with port ${serverPort}`
     );
     startKasuButton.disabled = true;
     stopKasuButton.disabled = false;
   });
   bot.on("kicked", (reason, loggedIn) => {
-    statusLabelError(
+    statusLabels.statusLabelError(
       `You've been kicked from ${serverIP} for ${reason}. Logged in: ${loggedIn}`
     );
     startKasuButton.disabled = true;
@@ -76,25 +79,4 @@ function createBot() {
       createBot();
     }
   });
-}
-
-function statusLabelSuccess(text) {
-  statusLabel.textContent = `Status: ${text}`;
-  statusLabel.style.color = "LightGreen";
-}
-function statusLabelWarning(text) {
-  statusLabel.textContent = `Status: ${text}`;
-  statusLabel.style.color = "Khaki";
-}
-function statusLabelError(text) {
-  statusLabel.textContent = `Status: ${text}`;
-  statusLabel.style.color = "LightCoral";
-}
-function statusLabelIdle() {
-  statusLabel.textContent = "Status: Idle";
-  statusLabel.style.color = "peachpuff";
-}
-function botStatusLabelIdle() {
-  botStatusLabel.textContent = "Bot status: Idle";
-  botStatusLabel.style.color = "peachpuff";
 }
