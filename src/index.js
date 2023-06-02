@@ -9,7 +9,7 @@ console.info = function () {
   const infoLog = Array.from(arguments)[0];
 
   if (
-    new RegExp("[A-Z0-9]{8}").test(infoLog) //https://regex101.com/r/h69seD/1
+    new RegExp("[A-Z0-9]{8}").test(infoLog) // https://regex101.com/r/NqqPGH/1
   ) {
     let authCode = infoLog.match("[A-Z0-9]{8}");
     statusLabelWarning(
