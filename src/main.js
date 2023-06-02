@@ -8,6 +8,9 @@ const createWindow = () => {
     darkTheme: true,
     webPreferences: {
       devTools: true,
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
     },
   });
 

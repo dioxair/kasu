@@ -22,5 +22,8 @@
   "homepage": "https://github.com/dioxair/kasu#readme",
   "devDependencies": {
     "electron": "^24.4.0"
+  },
+  "dependencies": {
+    "mineflayer": "^4.8.1"
   }
 }
