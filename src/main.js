@@ -16,7 +16,6 @@ const createWindow = () => {
     },
   });
 
-  win.setMenu(null);
   win.loadFile(path.join(__dirname, "index.html"));
 };
 
