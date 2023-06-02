@@ -32,7 +32,10 @@
       value=""
     />
 
-    <button onclick="onKasuStart()">Start Kasu</button>
+    <button onclick="onKasuStart()" id="startKasuButton">Start Kasu</button>
+    <button onclick="stopKasu()" disabled="true" id="stopKasuButton">
+      Stop Kasu
+    </button>
 
     <p id="statusLabel">Status: Idle</p>
   </body>

@@ -1,5 +1,7 @@
 const mineflayer = require("mineflayer");
 const statusLabel = document.getElementById("statusLabel");
+let startKasuButton = document.getElementById("startKasuButton");
+let stopKasuButton = document.getElementById("stopKasuButton");
 let bot;
 console.stdinfo = console.info.bind(console);
 console.info = function () {
@@ -30,6 +32,12 @@ function onKasuStart() {
   createBot();
 }
 
+function stopKasu() {
+  bot.quit('Stopping bot because user clicked on "Stop Kasu" button');
+  bot.on("end", () => statusLabelIdle());
+  stopKasuButton.disabled = true;
+  startKasuButton.disabled = false;
+}
 function createBot() {
   let serverIP = document.getElementById("serverIP").value;
   let serverPort = document.getElementById("serverPort").value;
@@ -42,18 +50,20 @@ function createBot() {
     version: "1.19.3",
   });
 
-  bot.on("login", () =>
+  bot.on("login", () => {
     statusLabelSuccess(
       `Successfully logged into ${serverIP} with port ${serverPort}`
-    )
-  );
+    );
+    startKasuButton.disabled = true;
+    stopKasuButton.disabled = false;
+  });
   bot.on("kicked", (reason, loggedIn) =>
     statusLabelError(
       `You've been kicked from ${serverIP} for ${reason}. Logged in: ${loggedIn}`
     )
   );
   bot.on("error", (err) => console.log(err));
-  bot.on("end", createBot);
+  bot.on("end", (reason) => console.log(reason));
 }
 
 function statusLabelSuccess(text) {

@@ -65,6 +65,27 @@ button:active {
   transform: translateY(-2px) scale(0.95);
 }
 
+button:disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+}
+
+button:hover:disabled {
+  transform: translateY(0px) scale(1);
+}
+
+button:active:disabled {
+  transform: translateY(0px) scale(1);
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+button:active {
+  transform: translateY(-2px) scale(0.95);
+}
+
 #statusLabel {
   font-family: Outfit;
   color: peachpuff;
