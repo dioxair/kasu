@@ -39,3 +39,27 @@ input:focus {
   transition: 0.2s;
   outline: none;
 }
+
+button {
+  font-family: Outfit;
+  color: peachpuff;
+  background-color: #303030;
+  cursor: pointer;
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem,
+    rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+  border: 2px solid peachpuff;
+  height: 100%;
+  width: 50%;
+  border-radius: 7px;
+  transition: 500ms;
+}
+
+button:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+button:active {
+  transform: translateY(-2px) scale(0.95);
+}
