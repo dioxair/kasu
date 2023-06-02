@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit&display=swap");
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Outfit", Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+  background-color: #252525;
+  color: peachpuff;
+}

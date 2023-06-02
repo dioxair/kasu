@@ -12,7 +12,7 @@ const createWindow = () => {
   });
 
   win.loadFile(path.join(__dirname, "index.html"));
-  win.menuBarVisible(true);
+  win.setMenu(null);
 };
 
 app.whenReady().then(() => {
