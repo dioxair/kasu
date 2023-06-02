@@ -1,13 +1,14 @@
 {
   "name": "kasu",
-  "version": "0.0.0",
+  "version": "1.13.6",
   "description": "An app made in Electron to keep Aternos servers up as long as possible",
   "main": "src/main.js",
   "scripts": {
     "start": "electron-forge start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make-win32": "electron-forge make -p win32",
+    "make-linux": "electron-forge make -p linux"
   },
   "repository": {
     "type": "git",
