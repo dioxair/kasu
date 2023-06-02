@@ -1,5 +1,5 @@
 {
-  "name": "kasu",
+  "name": "Kasu",
   "version": "1.14.8",
   "description": "An app made in Electron to keep Aternos servers up as long as possible",
   "main": "src/main.js",
