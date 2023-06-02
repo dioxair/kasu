@@ -27,6 +27,10 @@ function onKasuStart() {
     statusLabelIdle();
   }
 
+  createBot();
+}
+
+function createBot() {
   let serverIP = document.getElementById("serverIP").value;
   let serverPort = document.getElementById("serverPort").value;
 
@@ -44,8 +48,12 @@ function onKasuStart() {
     )
   );
   bot.on("kicked", (reason, loggedIn) =>
-    statusLabelError(`You've been kicked from ${serverIP} for ${reason}`)
+    statusLabelError(
+      `You've been kicked from ${serverIP} for ${reason}. Logged in: ${loggedIn}`
+    )
   );
+  bot.on("error", (err) => console.log(err));
+  bot.on("end", createBot);
 }
 
 function statusLabelSuccess(text) {
