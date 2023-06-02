@@ -1,0 +1,26 @@
+{
+  "name": "kasu",
+  "version": "0.0.0",
+  "description": "An app made in Electron to keep Aternos servers up as long as possible",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dioxair/kasu.git"
+  },
+  "keywords": [
+    "aternos"
+  ],
+  "author": "Dioxair",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dioxair/kasu/issues"
+  },
+  "homepage": "https://github.com/dioxair/kasu#readme",
+  "devDependencies": {
+    "electron": "^24.4.0"
+  }
+}
