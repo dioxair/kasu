@@ -4,8 +4,10 @@
   "description": "An app made in Electron to keep Aternos servers up as long as possible",
   "main": "src/main.js",
   "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron-forge start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
@@ -21,9 +23,15 @@
   },
   "homepage": "https://github.com/dioxair/kasu#readme",
   "devDependencies": {
+    "@electron-forge/cli": "^6.1.1",
+    "@electron-forge/maker-deb": "^6.1.1",
+    "@electron-forge/maker-rpm": "^6.1.1",
+    "@electron-forge/maker-squirrel": "^6.1.1",
+    "@electron-forge/maker-zip": "^6.1.1",
     "electron": "^24.4.0"
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "mineflayer": "^4.8.1"
   }
 }
