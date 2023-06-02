@@ -1,6 +1,6 @@
 {
   "name": "kasu",
-  "version": "1.13.6",
+  "version": "1.13.7",
   "description": "An app made in Electron to keep Aternos servers up as long as possible",
   "main": "src/main.js",
   "scripts": {

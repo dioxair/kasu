@@ -36,12 +36,10 @@ function onKasuStart() {
 }
 
 function stopKasu() {
-  bot.quit('Stopping bot because user clicked on "Stop Kasu" button');
-  bot.on("end", () => {
-    statusLabelIdle();
-    botStatusLabel.textContent = "Bot status: Idle";
-    botStatusLabel.style.color = "peachpuff";
-  });
+  bot.quit("quit");
+  statusLabelIdle();
+  botStatusLabel.textContent = "Bot status: Idle";
+  botStatusLabel.style.color = "peachpuff";
   stopKasuButton.disabled = true;
   startKasuButton.disabled = false;
 }
@@ -64,16 +62,22 @@ function createBot() {
     startKasuButton.disabled = true;
     stopKasuButton.disabled = false;
   });
-  bot.on("kicked", (reason, loggedIn) =>
+  bot.on("kicked", (reason, loggedIn) => {
     statusLabelError(
       `You've been kicked from ${serverIP} for ${reason}. Logged in: ${loggedIn}`
-    )
-  );
+    );
+    startKasuButton.disabled = true;
+    stopKasuButton.disabled = false;
+  });
   bot.on("error", (err) => {
     botStatusLabel.textContent = `Bot status: ${err}`;
     botStatusLabel.style.color = "LightCoral";
   });
-  bot.on("end", (reason) => console.log(reason));
+  bot.on("end", (reason) => {
+    if (reason !== "quit") {
+      createBot();
+    }
+  });
 }
 
 function statusLabelSuccess(text) {
