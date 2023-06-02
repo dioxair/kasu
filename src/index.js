@@ -1,6 +1,5 @@
 const mineflayer = require("mineflayer");
 const statusLabel = document.getElementById("statusLabel");
-const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
 
 let bot;
 
