@@ -54,7 +54,7 @@ function createBot() {
     port: document.getElementById("serverPort").value,
     username: document.getElementById("userEmail").value,
     auth: "microsoft",
-    version: "1.19.3",
+    version: false,
   });
 
   bot.on("login", () => {
