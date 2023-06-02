@@ -30,16 +30,14 @@ function onKasuStart() {
     statusLabelIdle();
   }
 
-  botStatusLabel.textContent = "Bot status: Idle";
-  botStatusLabel.style.color = "peachpuff";
+  botStatusLabelIdle();
   createBot();
 }
 
 function stopKasu() {
   bot.quit("quit");
   statusLabelIdle();
-  botStatusLabel.textContent = "Bot status: Idle";
-  botStatusLabel.style.color = "peachpuff";
+  botStatusLabelIdle();
   stopKasuButton.disabled = true;
   startKasuButton.disabled = false;
 }
@@ -95,4 +93,8 @@ function statusLabelError(text) {
 function statusLabelIdle() {
   statusLabel.textContent = "Status: Idle";
   statusLabel.style.color = "peachpuff";
+}
+function botStatusLabelIdle() {
+  botStatusLabel.textContent = "Bot status: Idle";
+  botStatusLabel.style.color = "peachpuff";
 }
