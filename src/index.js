@@ -27,6 +27,9 @@ function onKasuStart() {
     statusLabelIdle();
   }
 
+  let serverIP = document.getElementById("serverIP").value;
+  let serverPort = document.getElementById("serverPort").value;
+
   bot = mineflayer.createBot({
     host: document.getElementById("serverIP").value,
     port: document.getElementById("serverPort").value,
@@ -34,6 +37,15 @@ function onKasuStart() {
     auth: "microsoft",
     version: "1.19.3",
   });
+
+  bot.on("login", () =>
+    statusLabelSuccess(
+      `Successfully logged into ${serverIP} with port ${serverPort}`
+    )
+  );
+  bot.on("kicked", (reason, loggedIn) =>
+    statusLabelError(`You've been kicked from ${serverIP} for ${reason}`)
+  );
 }
 
 function statusLabelSuccess(text) {
