@@ -1,7 +1,19 @@
 const mineflayer = require("mineflayer");
 const statusLabel = document.getElementById("statusLabel");
-
 let bot;
+console.stdinfo = console.info.bind(console);
+console.info = function () {
+  const infoLog = Array.from(arguments)[0];
+
+  if (
+    new RegExp("[A-Z0-9]{8}").test(infoLog) //https://regex101.com/r/h69seD/1
+  ) {
+    let authCode = infoLog.match("[A-Z0-9]{8}");
+    statusLabelWarning(
+      `Looks like it's your first time using Kasu with that email. You'll need to authenticate with Microsoft. To authenticate, open the website https://www.microsoft.com/link and enter the code ${authCode}`
+    );
+  }
+};
 
 function onKasuStart() {
   if (
