@@ -86,7 +86,7 @@ button:active {
   transform: translateY(-2px) scale(0.95);
 }
 
-#statusLabel {
+p {
   font-family: Outfit;
   color: peachpuff;
   margin-top: 1.5rem;

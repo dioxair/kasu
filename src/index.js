@@ -1,5 +1,6 @@
 const mineflayer = require("mineflayer");
 const statusLabel = document.getElementById("statusLabel");
+const botStatusLabel = document.getElementById("botStatusLabel");
 let startKasuButton = document.getElementById("startKasuButton");
 let stopKasuButton = document.getElementById("stopKasuButton");
 let bot;
@@ -29,12 +30,18 @@ function onKasuStart() {
     statusLabelIdle();
   }
 
+  botStatusLabel.textContent = "Bot status: Idle";
+  botStatusLabel.style.color = "peachpuff";
   createBot();
 }
 
 function stopKasu() {
   bot.quit('Stopping bot because user clicked on "Stop Kasu" button');
-  bot.on("end", () => statusLabelIdle());
+  bot.on("end", () => {
+    statusLabelIdle();
+    botStatusLabel.textContent = "Bot status: Idle";
+    botStatusLabel.style.color = "peachpuff";
+  });
   stopKasuButton.disabled = true;
   startKasuButton.disabled = false;
 }
@@ -62,7 +69,10 @@ function createBot() {
       `You've been kicked from ${serverIP} for ${reason}. Logged in: ${loggedIn}`
     )
   );
-  bot.on("error", (err) => console.log(err));
+  bot.on("error", (err) => {
+    botStatusLabel.textContent = `Bot status: ${err}`;
+    botStatusLabel.style.color = "LightCoral";
+  });
   bot.on("end", (reason) => console.log(reason));
 }
 
